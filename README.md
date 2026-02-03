@@ -1,19 +1,19 @@
 # Visitekaartje 
 
 ## Beschrijving
-Visitekaartje met contactgegevens voor de FDND Squad 2021.
+Visitekaartje met contactgegeven
 
 <!-- Voeg een link toe naar Github Pages 🌐-->
-https://koop.fdnd.nl
 
 <!-- Voeg een mooie poster visual toe 📸 -->
 <img width="1148" alt="Screenshot 2021-09-02 at 10 51 56" src="https://user-images.githubusercontent.com/1391509/131814116-7da00864-a573-4cc6-bce4-0dd5887c28b4.png">
 
 
-
+<!--
 ## Interactie
 
 Als interactie kun je de kaart flippen. Hier komt een [uitleg hoe ik dat heb gedaan en de code](https://github.com/KoopReynders/profile-card/wiki/Flip-interactie).
+-->
 
 ## Bronnen
 
