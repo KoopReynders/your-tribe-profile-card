@@ -13,7 +13,7 @@ https://koop.fdnd.nl
 
 ## Interactie
 
-Als interactie kun je de kaart flippen. Hier staat een [uitleg hoe ik dat heb gedaan en de code](https://github.com/KoopReynders/profile-card/wiki/Flip-interactie).
+Als interactie kun je de kaart flippen. Hier komt een [uitleg hoe ik dat heb gedaan en de code](https://github.com/KoopReynders/profile-card/wiki/Flip-interactie).
 
 ## Bronnen
 
