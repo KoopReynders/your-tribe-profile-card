@@ -3,91 +3,110 @@
 * {
     box-sizing: border-box;
   }
-html{
+html {
   background: whitesmoke;
 }
-body{
+body {
   overflow-y: scroll;
   min-width: 60em;
   margin: 0 auto;
   padding: 0;
   /background: pink;
+
+  perspective: 1000px;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  perspective: 1000px;
 }
 
-main{ /* card */
+/* MAIN */
+/* card */
+main { 
   width: 20em;
   height: 30em;
   background: url(/assets/bg.jpg) black;
   background-size: cover;
   position: relative;
+  z-index: 3;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   /object-fit: none;
+  
   border-radius: 1rem;
   box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
     inset 0 0 0 10px black, 
     inset 0 0 0 12px white;
 
-  z-index: 3;
   transition: all 0.5s ease;
+
+  /* titel */
+  h1 { 
+    margin: 0;
+    margin-bottom: 2rem;
+    
+    text-align: center;
+    font-family: 'Source Sans Pro', helvetica, arial, sans-serif;
+    font-weight: normal;
+    font-size: 1.06em;
+    color: white;
+  }
 }
+/* animatie op de main als er meer info wordt geklikt */
 .move main {
   transform: rotateY(-20deg);
 }
-h1{ /* titel */
-  font-family: 'Source Sans Pro', helvetica, arial, sans-serif;
-  font-weight: normal;
-  font-size: 1.06em;
-  color: white;
-  margin: 0;
-  margin-bottom: 2rem;
-  text-align: center;
-  /* background: pink; */
-}
+
+
+/* BUTTON */
 /* Meer info */
-button{
+button {
   position: absolute;
   right: -7rem;
   bottom: -2rem;
-  
-  /* 98.css https://github.com/jdan/98.css */
-  background: silver;
-  box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
-  border: none;
-  border-radius: 0;
   min-height: 23px;
   min-width: 75px;
   padding: 0 12px;
+
   font-family: "Pixelated MS Sans Serif",Arial;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;
+  /* 98.css https://github.com/jdan/98.css */
+
+  background: silver;
+  box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+  border: none;
+  border-radius: 0;
+    
+    /* active state */
+    &:active {
+      box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey;
+      padding: 2px 11px 0 13px;
+    }
 }
-button:active{
-  box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey;
-  padding: 2px 11px 0 13px;
-}
-img[src*=meer]{
+/* label "meer" bij button */
+img[src*=meer] {
   position: absolute;
   right: -8rem;
   bottom: -0.5rem;
+
   transform: scale(0.6);
 }
-/* "Wat is dat?" label helper
-delayed animation, show after 8 sec
-*/
-img[src*=watisdat]{
+/* label "Wat is dat?" helper */
+/* delayed animation, show after 8 sec */
+img[src*=watisdat] {
   position: absolute;
   left: -15rem;
   top: 10rem;
+
   transform: scale(0.85);
+
   opacity: 0;
+  
   /* dit alleen laten zien op schermen met een muis die hovert */
   @media (hover: hover) {
     animation: slidein 1s;
@@ -96,41 +115,51 @@ img[src*=watisdat]{
     animation-delay: 8s;
   }
 }
-
 @keyframes slidein {
   from {
     opacity: 0;
     left: -15rem;
   }
-
   to {
     opacity: 1;
     left: -13rem;
   }
 }
-section#kop{ 
+
+/* SECTION KOP */
+/* plaatjes en hover interactie */
+section#kop { 
   position: relative;
-}
-section img{ /* kop img */
-  width: 100%;
-  border-radius: 1rem;
-  padding: 12px;
-}
-div#hit{ /* hit */
-  position: absolute;
-  top: 52%;
-  left: 19%;
-  padding: 1rem;
-}
-div#blup{ /* blup ding */
-  margin: 0;
-  width: 2rem; 
-  height: 2rem;
-  background: rgba(255,255,255,0.2);
-  border: 0.1em solid white;
-  border-radius: 50%;
-  display: inline-block;
-  animation: pulse 2s infinite;
+
+  img { /* kop img */
+    width: 100%;
+    padding: 12px;
+
+    border-radius: 1rem;
+  }
+
+  /* hit area voor de hover 
+  met de blup*/
+  div#hit { 
+    position: absolute;
+    top: 52%;
+    left: 19%;
+    padding: 1rem;
+
+    /* de blup animatie */
+    div#blup { /* blup ding */
+      margin: 0;
+      width: 2rem; 
+      height: 2rem;
+      display: inline-block;
+
+      background: rgba(255,255,255,0.2);
+      border: 0.1em solid white;
+      border-radius: 50%;
+      
+      animation: pulse 2s infinite;
+    }
+  }
 }
 @keyframes pulse {
   0% {
@@ -144,24 +173,30 @@ div#blup{ /* blup ding */
   }
 }
 
-aside{ /* extra info */
+/* ASIDE */
+/* extra info */
+aside { 
+  width: 20rem;
+  height: 30rem;
+  z-index: 2;
+  margin-left: -20em;
+  padding: 1em 2em;
+
+  background: url(/assets/bg.jpg) black;
+  background-size: cover;
+
+  transform:rotate(-4deg);
+
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
   font-size: 1em;
   color: whitesmoke;
-  padding: 1em 2em;
-  width: 20rem;
-  height: 30rem;
-  background: url(/assets/bg.jpg) black;
-  background-size: cover;
+  
   border-radius: 1rem;
   box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
     inset 0 0 0 10px black, 
     inset 0 0 0 12px white;
 
-  z-index: 2;
-  margin-left: -20em;
-  transform:rotate(-4deg);
   transition: all 0.5s ease;
 }
 .move aside {
@@ -169,24 +204,30 @@ aside{ /* extra info */
   transform: rotateY(20deg) translateX(-20px);
 }
 
-footer{
+/* FOOTER */
+/* contact info en links */
+footer {
+  width: 20rem;
+  height: 30rem;
+  margin-left: -20em;
+  padding: 1em 2em;
+  z-index: 1;
+  
+  transform:rotate(10deg);
+
+  background: url(/assets/bg.jpg) black;
+  background-size: cover;
+
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
   font-size: 1em;
   color: whitesmoke;
-  padding: 1em 2em;
-  width: 20rem;
-  height: 30rem;
-  background: url(/assets/bg.jpg) black;
-  background-size: cover;
+
   border-radius: 1rem;
   box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
   inset 0 0 0 10px black, 
   inset 0 0 0 12px white;
 
-  z-index: 1;
-  margin-left: -20em;
-  transform:rotate(10deg);
   transition: all 0.5s ease 0.8s;
 }
 .move footer {
@@ -195,36 +236,36 @@ footer{
   transform: rotateY(-20deg) translateX(-40px);
 }
 
-h2{
+h2 {
   margin-bottom: 0;
 }
-p{
+p {
   margin-top: 0;
 }  
-a{
+a {
   color: white;
 }
 a:hover, a:focus{
   background: whitesmoke;
   color: black;
 }
-li{
+li {
   margin-top: 0;
   padding-top: 0;
   background: pink;
 }
-.rollover{
+.rollover {
   background: rgba(255,255,255,0.9);
 }
-.hide{
+.hide {
     opacity: 0;
 }
-.none{
+.none {
   display: none;
 }
-.cursorpointer{
+.cursorpointer {
   cursor: pointer;
 }
-.cursornone{
+.cursornone {
   cursor: none;
 }
