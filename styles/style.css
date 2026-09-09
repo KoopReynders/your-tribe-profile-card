@@ -7,9 +7,10 @@ html {
   background: whitesmoke;
 }
 body {
-  overflow-y: scroll;
+  overflow-x: scroll;
   margin: 0 auto;
   padding: 0;
+  min-height: 40em;
 
   display: flex;
   flex-direction: column;
@@ -17,7 +18,6 @@ body {
   align-items: center;
 
   @media (width >= 60em){ /* min-width: 60em; */
-    /* background: pink; */
     flex-direction: row;
     /* 3d effectje op de kaartjes */
     perspective: 1000px;
@@ -28,17 +28,18 @@ body {
 /* MAIN */
 /* card */
 main { 
+  position: relative;
   max-width: 20em;
   height: 30em;
-  background: url(/assets/bg.jpg) black;
-  background-size: cover;
-  position: relative;
   z-index: 3;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+
+  background: url(/assets/bg.jpg) black;
+  background-size: cover;
+
   border-radius: 1rem;
   box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
     inset 0 0 0 10px black, 
@@ -74,7 +75,6 @@ aside {
   position: relative;
   max-width: 20rem;
   height: 30rem;
-  z-index: 2;
   margin-top: -30em;
   margin-left: 1em;
   @media (width >= 60em){ /* min-width: 60em; */
@@ -82,6 +82,7 @@ aside {
     margin-left: -20em;
   }
   padding: 1em 2em;
+  z-index: 2;
 
   transform:rotate(-4deg);
 
@@ -156,13 +157,14 @@ footer {
 /* BUTTON */
 /* Meer info */
 button {
-  position: absolute;
-  right: 1rem;
-  bottom: -3rem;
+  position: relative;
   width: 75px;
   height: 25px;
+  margin: 4em 0;
+  scroll-margin-bottom: 4em;
   /* padding: 0 12px; */
   @media (width >= 60em){ /* min-width: 60em; */
+    position: absolute;
     right: -7rem;
     bottom: -2rem;
   }
@@ -193,7 +195,7 @@ img[src*=meer] {
 
   position: absolute;
   right: -8rem;
-  bottom: -0.5rem;
+  bottom: 1rem;
 
   transform: scale(0.6);
 }
