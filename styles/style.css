@@ -8,23 +8,27 @@ html {
 }
 body {
   overflow-y: scroll;
-  min-width: 60em;
   margin: 0 auto;
   padding: 0;
-  /background: pink;
-
-  perspective: 1000px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  @media (width >= 60em){ /* min-width: 60em; */
+    /* background: pink; */
+    flex-direction: row;
+    /* 3d effectje op de kaartjes */
+    perspective: 1000px;
+  }
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries */
 }
 
 /* MAIN */
 /* card */
 main { 
-  width: 20em;
+  max-width: 20em;
   height: 30em;
   background: url(/assets/bg.jpg) black;
   background-size: cover;
@@ -34,7 +38,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /object-fit: none;
   
   border-radius: 1rem;
   box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
@@ -57,19 +60,112 @@ main {
 }
 /* animatie op de main als er meer info wordt geklikt */
 .move main {
-  transform: rotateY(-20deg);
+  margin-top: 2em;
+  transform:rotate(3deg);
+  @media (width >= 60em){ /* min-width: 60em; */
+    margin-top: 0;
+    transform: rotateY(-20deg);
+  }
 }
+
+/* ASIDE */
+/* extra info */
+aside { 
+  position: relative;
+  max-width: 20rem;
+  height: 30rem;
+  z-index: 2;
+  margin-top: -30em;
+  margin-left: 1em;
+  @media (width >= 60em){ /* min-width: 60em; */
+    margin-top: 0;
+    margin-left: -20em;
+  }
+  padding: 1em 2em;
+
+  transform:rotate(-4deg);
+
+  background: url(/assets/bg.jpg) black;
+  background-size: cover;
+
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: normal;
+  font-size: 1em;
+  color: whitesmoke;
+  
+  border-radius: 1rem;
+  box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
+    inset 0 0 0 10px black, 
+    inset 0 0 0 12px white;
+
+  transition: all 0.5s ease;
+}
+.move aside {
+  margin-top:0;
+  @media (width >= 60em){ /* min-width: 60em; */
+    margin-left: 0;
+    transform: rotateY(20deg) translateX(-20px);
+  }
+}
+
+/* FOOTER */
+/* contact info en links */
+footer {
+  position: relative;
+  max-width: 20rem;
+  height: 30rem;
+  margin-top: -30em;
+  margin-left: 1em;
+  @media (width >= 60em){ /* min-width: 60em; */
+    margin-top: 0;
+    margin-left: -20em;
+  }
+  padding: 1em 2em;
+  z-index: 1;
+  
+  transform:rotate(4deg);
+  @media (width >= 60em){ /* min-width: 60em; */
+    transform:rotate(8deg);
+  }
+  background: url(/assets/bg.jpg) black;
+  background-size: cover;
+
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: normal;
+  font-size: 1em;
+  color: whitesmoke;
+
+  border-radius: 1rem;
+  box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
+  inset 0 0 0 10px black, 
+  inset 0 0 0 12px white;
+
+  transition: all 0.5s ease 0.8s;
+}
+.move footer {
+  margin-top:0;
+  @media (width >= 60em){ /* min-width: 60em; */
+    margin-left: 0;
+    width: 18rem;
+    transform: rotateY(-20deg) translateX(-40px);
+  }
+}
+
 
 
 /* BUTTON */
 /* Meer info */
 button {
   position: absolute;
-  right: -7rem;
-  bottom: -2rem;
-  min-height: 23px;
-  min-width: 75px;
-  padding: 0 12px;
+  right: 1rem;
+  bottom: -3rem;
+  width: 75px;
+  height: 25px;
+  /* padding: 0 12px; */
+  @media (width >= 60em){ /* min-width: 60em; */
+    right: -7rem;
+    bottom: -2rem;
+  }
 
   font-family: "Pixelated MS Sans Serif",Arial;
   font-size: 11px;
@@ -90,6 +186,11 @@ button {
 }
 /* label "meer" bij button */
 img[src*=meer] {
+  display: none;
+  @media (width >= 60em){ /* min-width: 60em; */
+    display: block;
+  }
+
   position: absolute;
   right: -8rem;
   bottom: -0.5rem;
@@ -106,7 +207,7 @@ img[src*=watisdat] {
   transform: scale(0.85);
 
   opacity: 0;
-  
+
   /* dit alleen laten zien op schermen met een muis die hovert */
   @media (hover: hover) {
     animation: slidein 1s;
@@ -173,68 +274,7 @@ section#kop {
   }
 }
 
-/* ASIDE */
-/* extra info */
-aside { 
-  width: 20rem;
-  height: 30rem;
-  z-index: 2;
-  margin-left: -20em;
-  padding: 1em 2em;
 
-  background: url(/assets/bg.jpg) black;
-  background-size: cover;
-
-  transform:rotate(-4deg);
-
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: normal;
-  font-size: 1em;
-  color: whitesmoke;
-  
-  border-radius: 1rem;
-  box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
-    inset 0 0 0 10px black, 
-    inset 0 0 0 12px white;
-
-  transition: all 0.5s ease;
-}
-.move aside {
-  margin-left: 0;
-  transform: rotateY(20deg) translateX(-20px);
-}
-
-/* FOOTER */
-/* contact info en links */
-footer {
-  width: 20rem;
-  height: 30rem;
-  margin-left: -20em;
-  padding: 1em 2em;
-  z-index: 1;
-  
-  transform:rotate(10deg);
-
-  background: url(/assets/bg.jpg) black;
-  background-size: cover;
-
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: normal;
-  font-size: 1em;
-  color: whitesmoke;
-
-  border-radius: 1rem;
-  box-shadow: rgba(17, 12, 46, 0.5) 0px 48px 100px 0px, 
-  inset 0 0 0 10px black, 
-  inset 0 0 0 12px white;
-
-  transition: all 0.5s ease 0.8s;
-}
-.move footer {
-  margin-left: 0;
-  width: 18rem;
-  transform: rotateY(-20deg) translateX(-40px);
-}
 
 h2 {
   margin-bottom: 0;
