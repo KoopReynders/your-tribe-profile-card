@@ -50,6 +50,7 @@ h1{ /* titel */
   text-align: center;
   /* background: pink; */
 }
+/* Meer info */
 button{
   position: absolute;
   right: -7rem;
@@ -78,17 +79,24 @@ img[src*=meer]{
   bottom: -0.5rem;
   transform: scale(0.6);
 }
+/* "Wat is dat?" label helper
+delayed animation, show after 8 sec
+*/
 img[src*=watisdat]{
   position: absolute;
   left: -15rem;
   top: 10rem;
   transform: scale(0.85);
   opacity: 0;
-  animation: slidein 1s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  animation-delay: 9s;
+  /* dit alleen laten zien op schermen met een muis die hovert */
+  @media (hover: hover) {
+    animation: slidein 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: 8s;
+  }
 }
+
 @keyframes slidein {
   from {
     opacity: 0;
