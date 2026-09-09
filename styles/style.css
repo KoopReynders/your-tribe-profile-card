@@ -186,9 +186,9 @@ button {
 }
 /* label "meer" bij button */
 img[src*=meer] {
-  display: none;
+  visibility: hidden;
   @media (width >= 60em){ /* min-width: 60em; */
-    display: block;
+    visibility:visible;
   }
 
   position: absolute;
